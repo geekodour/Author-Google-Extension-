@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Author for Amazon and Flipkart",
+  "version": "0.1",
+  "description": "Displays Author Image in Amazon and Flipkart",
+  "author": "Hrishikesh Barman (hrishikeshbman@gmail.com)",
+  "page_action": {
+      "default_title": "Author for Amazon and Flipkart",
+      "default_icon" : "img/icon2.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["tabs","*://*/*","declarativeContent"],
+  "content_scripts": [
+  		{
+  			"matches": [
+                    "*://amazon.in/*",
+                    "*://www.amazon.in/*",
+                    "*://flipkart.com/*",
+                    "*://www.flipkart.com/*",
+                    "*://amazon.com/*",
+                    "*://www.amazon.com/*"
+                  ],
+  			"js": ["content.js"],
+        "css" : ["styles.css"],
+        "run_at": "document_end"
+  		}
+  ]
+}

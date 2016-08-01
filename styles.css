@@ -1,0 +1,40 @@
+.bookDetails-wrap .slider-div {
+	position:relative;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#formats .slider-div {
+	position:relative;
+}
+
+.image-slider {
+	position: relative;
+	height: auto;
+	list-style: none;
+	overflow: hidden;
+	float: left;
+	/*Chrom default padding for ul is 40px */
+	padding:0px;
+	margin:0px;
+
+
+	
+}
+
+.image-slider li {
+	position: relative;
+	float: left;
+	display: inline;
+    height: 200px;
+    width: 200px;
+}
+
+.image-slider li img {
+  	display: inline-block;
+    margin: 5px;
+    min-width: 100%;
+    min-height: 100%;
+    -ms-interpolation-mode: bicubic; /* Better image scaling in IE */
+}
+
