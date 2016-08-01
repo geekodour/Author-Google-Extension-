@@ -107,6 +107,7 @@ fetch(url,{
               
   })
   .then(function appendToSite(base64Array){
+    
     //GENERATING IMAGE TAG
     base64Array = base64Array.map(function(b64ImgText){
       var imageTag = document.createElement('img');
@@ -116,16 +117,16 @@ fetch(url,{
     //IMAGE TAG COMPLETE
 
     //GET THE DIV FROM AMAZON OR FLIPKART
-    var imageDiv = getTheDiv();
+    var imageDivFromAmazon_FK = getTheDiv();
 
     //NOW MAKE SLIDER DIV (COULD NOT COMPLETE MAKING THE SLIDER, SO MADE IT COLLAGE)
-    var slideDiv = document.createElement('div');
-    slideDiv.className = "slider-div";
+    var imageContainerDiv = document.createElement('div');
+    imageContainerDiv.className = "image-gallery-div";
     //END OF MAKING OF SLIDER DIV
 
     //UNORDERED LIST ELEMENT FOR IMAGES
     var UlElement = document.createElement('ul');
-    UlElement.className = "image-slider";
+    UlElement.className = "image-ul-list";
     //END OF UNORDERED IMAGES
     base64Array.forEach(function(imgEl){
       //MAKE EACH IMAGE TAG A LIST TAG HERE, THEN INSERT TO THE UL ELEMENT
@@ -133,8 +134,8 @@ fetch(url,{
       LiElement.appendChild(imgEl);
       UlElement.appendChild(LiElement);
     });
-    slideDiv.appendChild(UlElement);
-    imageDiv.appendChild(slideDiv);
+    imageContainerDiv.appendChild(UlElement);
+    imageDivFromAmazon_FK.appendChild(imageContainerDiv);
   })
   .catch(function(err){
     console.log("ERREOR:",err);
