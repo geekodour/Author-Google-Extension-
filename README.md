@@ -1,4 +1,5 @@
 # Author-Google-Extension-
+Author Image Gallery for Amazon and Flipkart
 
 ## Installation Instruction
 This is not packaged yet, so do the following.
@@ -13,4 +14,7 @@ This is not packaged yet, so do the following.
 - Go to any page showing book in flipkart/amazon.com/amazon.in
 
 ## Screenshots
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/1.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/2.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/3.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/4.png)
