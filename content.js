@@ -36,7 +36,7 @@ function getAuthor(){
 //GET PLACEMENT DIV AND APPEND IMAGE(USED, DIFFERENT FOR FLIPKART AND AMAZON)
 function getTheDiv(){
   if(host === 'amazon'){
-    return document.getElementById('formats');
+    return document.getElementById('formats')? document.getElementById('formats') : document.querySelector('.a-box.a-box-tab.a-tab-content');
   }
   else if(host === 'flipkart'){
     //var len = document.getElementsByClassName('PWqzqY').length;
@@ -131,6 +131,7 @@ promise1
 
       //GET THE DIV FROM AMAZON OR FLIPKART
       var imageDivFromAmazon_FK = getTheDiv();
+      console.log(imageDivFromAmazon_FK);
 
       //NOW MAKE SLIDER DIV (COULD NOT COMPLETE MAKING THE SLIDER, SO MADE IT COLLAGE)
       var imageContainerDiv = document.createElement('div');
