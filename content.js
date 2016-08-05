@@ -29,7 +29,11 @@ function getAuthor(){
   }
   else if(host === 'flipkart'){
     imageNeeded = 7;
-    return document.querySelector('#container .PWqzqY a').innerText;
+    try{
+      return document.querySelector('#container .PWqzqY a').innerText;
+    }
+    catch(e){
+    }
   }
 }
 
@@ -131,7 +135,6 @@ promise1
 
       //GET THE DIV FROM AMAZON OR FLIPKART
       var imageDivFromAmazon_FK = getTheDiv();
-      console.log(imageDivFromAmazon_FK);
 
       //NOW MAKE SLIDER DIV (COULD NOT COMPLETE MAKING THE SLIDER, SO MADE IT COLLAGE)
       var imageContainerDiv = document.createElement('div');
@@ -162,7 +165,8 @@ promise1
       }
     })
     .catch(function(err){
-      console.log("ERREOR:",err);
+      //JUST LET IT PAS FOR NOW
+      //console.log("ERREOR:",err);
     });
   //***********************************************************
   //END OF NETWORK REQUEST
