@@ -1,6 +1,6 @@
 var host; // CONTAINS TYHE HOSTNAME, eg. FLIPKART, AMAZON
 var author; 
-var imageNeeded; //6 IMAGES FOR AMAZON AND 4 FOR FLIPKART
+var imageNeeded; //6 IMAGES NEEDED
 
 //INITIAL FUNCTION TO SET HOST
 (function checkHost(){
@@ -28,7 +28,7 @@ function getAuthor(){
     }  
   }
   else if(host === 'flipkart'){
-    imageNeeded = 5;
+    imageNeeded = 7;
     return document.querySelector('#container .PWqzqY a').innerText;
   }
 }
@@ -39,7 +39,11 @@ function getTheDiv(){
     return document.getElementById('formats');
   }
   else if(host === 'flipkart'){
-    return document.getElementsByClassName('_1idxIy')[0];
+    //var len = document.getElementsByClassName('PWqzqY').length;
+    var sib = document.querySelector('._3LEeBH');
+    var parent = document.querySelector('._1MVZfW').parentElement.lastChild;
+    return [parent,sib];
+    //return document.getElementsByClassName('PWqzqY')[len-1];
   }
 
 }
@@ -80,8 +84,8 @@ var promise1 = new Promise(
   );
 promise1
 .then(function(val){
-  author = val+" author"; // GETS THE AUTHOR NAME AND APPENDS "AUTHOR" TO IT
-  return 'https://www.google.co.in/search?&tbm=isch&q='+author; // PREPARES THE URL TO BE FETCHED
+  author = val;
+  return 'https://www.google.co.in/search?&tbm=isch&q='+val+" author"; // PREPARES THE URL TO BE FETCHED
 })
 .then(function(url){
   //NETWORK REQUEST
@@ -143,8 +147,18 @@ promise1
         LiElement.appendChild(imgEl);
         UlElement.appendChild(LiElement);
       });
+      //MAKE A NICE HEADER
+      var headerEl = document.createElement('h2');
+      headerEl.innerText = "Photos of "+ author;
+      //END OF MAKING HEADER ELEMENT
+      imageContainerDiv.appendChild(headerEl);
       imageContainerDiv.appendChild(UlElement);
+      if(host === 'flipkart'){
+      imageDivFromAmazon_FK[0].insertBefore(imageContainerDiv,imageDivFromAmazon_FK[1]);
+      }
+      else{
       imageDivFromAmazon_FK.appendChild(imageContainerDiv);
+      }
     })
     .catch(function(err){
       console.log("ERREOR:",err);

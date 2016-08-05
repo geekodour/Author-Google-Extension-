@@ -1,7 +1,9 @@
-._1idxIy .image-gallery-div {
+._2Cl4hZ .image-gallery-div {
 	position:relative;
 	margin-top: 20px;
 	margin-bottom: 30px;
+	width: 700px;
+	overflow: hidden !important;
 }
 
 #formats .image-gallery-div {
