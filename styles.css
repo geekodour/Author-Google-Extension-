@@ -1,13 +1,13 @@
 ._2Cl4hZ .image-gallery-div {
 	position:relative;
 	margin-top: 20px;
-	margin-bottom: 30px;
 	width: 700px;
 	overflow: hidden !important;
 }
 
 #formats .image-gallery-div {
-	position:relative;
+	margin-bottom: 30px !important;
+	height: 400px;
 }
 
 .image-ul-list {
@@ -30,10 +30,12 @@
 	display: inline;
     height: 200px;
     width: 200px;
+    overflow: hidden;
 }
 
 .image-ul-list li img {
   	display: inline-block;
+  	object-fit: cover;
     margin: 5px;
     min-width: 100%;
     min-height: 100%;
