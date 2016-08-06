@@ -18,7 +18,5 @@ This is not packaged yet, so do the following.
 - Add title header to gallery box
 
 ## Screenshots
-![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/1.png)
-![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/2.png)
-![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/3.png)
-![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/4.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/5.png)
+![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/6.png)
