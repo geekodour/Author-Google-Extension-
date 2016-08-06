@@ -1,17 +1,31 @@
-var host;
+var host; // CONTAINS TYHE HOSTNAME, eg. FLIPKART, AMAZON
 var author; 
-var imageNeeded;
+var imageNeeded; //6 IMAGES NEEDED
 
-// get hostname - exlucde domain
+//INITIAL FUNCTION TO SET HOST
 (function checkHost(){
   host = window.location.host.split('.')[1];
 })();
 
-// get author's name
+/*
+
+********************FUNCTION DECLARATIONS*******************************
+
+*/
+
+//GET AUTHOR FUNCTION (USED)
 function getAuthor(){
+  //THIS EXTENION WORKS FOR AMAZON AND FLIPKART ONLY
   if(host === 'amazon'){
     imageNeeded = 7; //7 because 1st element will be stripped
-    return authorRAW = document.querySelector('.contributorNameID').innerText;
+    var authorRAW = document.querySelector('.author.notFaded a').innerText;
+    var authorSplit = authorRAW.split(' ');
+    if(authorSplit[0] === "Visit"){
+      return authorRAW.split("Amazon's")[1].split("Page")[0];
+    }
+  else {
+      return authorRAW;
+    }  
   }
   else if(host === 'flipkart'){
     imageNeeded = 7;
@@ -35,7 +49,9 @@ function getTheDiv(){
     return [parent,sib];
     //return document.getElementsByClassName('PWqzqY')[len-1];
   }
+
 }
+
 
 //LOAD SCRIPT FUNCTION (NOT USED)
 function loadScript(googleScript) {
@@ -44,6 +60,9 @@ function loadScript(googleScript) {
             script.src = googleScript; 
             document.body.appendChild(script);
         }
+
+
+
 
 //DECODE HTML TEXT FUNCTION (USED)
 function escapeHTML(htmlText){
@@ -54,6 +73,12 @@ function escapeHTML(htmlText){
 	return htmlText;
 }
 
+
+/*
+
+********************END OF FUNCTION DECLARATIONS*******************************
+
+*/
 var promise1 = new Promise(
     function(resolve,reject){
       setTimeout(function(){
@@ -67,7 +92,8 @@ promise1
   return 'https://www.google.co.in/search?&tbm=isch&q='+val+" author"; // PREPARES THE URL TO BE FETCHED
 })
 .then(function(url){
-  /* Start - network request */
+  //NETWORK REQUEST
+  //***************
   fetch(url,{
     //no additional fetch parameters added
     //mode: 'no-cors'
@@ -94,7 +120,7 @@ promise1
 
     */
     // SEE GIST : (THIS CODE WAS COMMENTED HERE) SEE GIST FOR HTML IMPLEMENTATION
-    // GIST URL : https://gist.github.com/geekodour/6e784fe8ab6b5cde3095e3937f860e86
+    //GIST URL : https://gist.github.com/geekodour/6e784fe8ab6b5cde3095e3937f860e86
                 
     })
     .then(function appendToSite(base64Array){
@@ -139,8 +165,12 @@ promise1
       }
     })
     .catch(function(err){
-      // passing for now
-      // use console.error(err);
+      //JUST LET IT PAS FOR NOW
+      //console.log("ERREOR:",err);
     });
-    /* end of network request */
+  //***********************************************************
+  //END OF NETWORK REQUEST
+
+
 });
+
