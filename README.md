@@ -14,8 +14,8 @@ This is not packaged yet, so do the following.
 - Go to any page showing book in flipkart/amazon.com/amazon.in
 
 ## Todo
-- Add CSS Styles
-- Add title header to gallery box
+- Add CSS Styles :cold_sweat:
+- ~~Add title header to gallery box~~
 
 ## Screenshots
 ![Screenshots](https://raw.githubusercontent.com/geekodour/Author-Google-Extension-/master/screenshots/5.png)
