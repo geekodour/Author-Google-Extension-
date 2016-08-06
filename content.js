@@ -1,5 +1,5 @@
-var host; 
-var author; 
+var host;
+var author;
 var imageNeeded; // 7
 
 // get host, strip domain
@@ -11,7 +11,7 @@ var imageNeeded; // 7
 // get author names
 function getAuthor(){
   if(host === 'amazon'){
-    imageNeeded = 7; 
+    imageNeeded = 7;
     try{
       var authorRAW = document.querySelector('.author.notFaded a').innerText;
       var authorSplit = authorRAW.split(' ');
@@ -20,15 +20,22 @@ function getAuthor(){
       }
       else {
         return authorRAW;
-      }  
+      }
     }
     catch(e){
       // don't show any errors
     }
-    
-    /*
-    Here goes the alternative short,easy and clear code to do the above 
-    */
+
+    /* Here goes the alternative short,easy and clear code to do the above
+
+    try{
+      return document.querySelector('.contributorNameID').innerText
+        ? document.querySelector('.contributorNameID').innerText
+        : document.querySelector('.author.notFaded a').innerText;
+    }
+    catch(e){
+      //do nothing
+    } */
   }
   else if(host === 'flipkart'){
     imageNeeded = 7;
@@ -41,7 +48,7 @@ function getAuthor(){
   }
 }
 
-// get the main div 
+// get the main div
 function getTheDiv(){
   if(host === 'amazon'){
     return document.getElementById('formats')? document.getElementById('formats') : document.querySelector('.a-box.a-box-tab.a-tab-content');
@@ -54,7 +61,7 @@ function getTheDiv(){
 
 }
 
-// decode html string 
+// decode html string
 function escapeHTML(htmlText){
 	var r = /\\u([\d\w]{4})/gi;
 	htmlText = htmlText.replace(r, function (match, grp) {
@@ -95,7 +102,7 @@ authorWait
       return b64ImgArray;
     })
     .then(function appendToSite(imgElArray){
-      
+
       // generate image element array from base64 encoded string array
       imgElArray = imgElArray.map(function(b64ImgText){
         var imageTag = document.createElement('img');
@@ -129,7 +136,7 @@ authorWait
       imgContainerDiv.appendChild(headerEl);
       imgContainerDiv.appendChild(ulEl);
 
-      // appending into main webpage by checking the host 
+      // appending into main webpage by checking the host
       if(host === 'flipkart'){
         mainDiv[0].insertBefore(imgContainerDiv,mainDiv[1]);
       }
