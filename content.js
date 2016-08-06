@@ -1,23 +1,18 @@
-var host; // CONTAINS TYHE HOSTNAME, eg. FLIPKART, AMAZON
+var host; 
 var author; 
-var imageNeeded; //6 IMAGES NEEDED
+var imageNeeded;
 
-//INITIAL FUNCTION TO SET HOST
+// get host, strip domain
 (function checkHost(){
   host = window.location.host.split('.')[1];
 })();
 
-/*
-
-********************FUNCTION DECLARATIONS*******************************
-
-*/
 
 //GET AUTHOR FUNCTION (USED)
 function getAuthor(){
-  //THIS EXTENION WORKS FOR AMAZON AND FLIPKART ONLY
   if(host === 'amazon'){
-    imageNeeded = 7; //7 because 1st element will be stripped
+    // Keep it in the long form as of now, I do some tests on it later
+    imageNeeded = 7; // 7 because 1st element will be stripped
     var authorRAW = document.querySelector('.author.notFaded a').innerText;
     var authorSplit = authorRAW.split(' ');
     if(authorSplit[0] === "Visit"){
@@ -33,6 +28,7 @@ function getAuthor(){
       return document.querySelector('#container .PWqzqY a').innerText;
     }
     catch(e){
+      //don't show any error
     }
   }
 }
@@ -43,26 +39,12 @@ function getTheDiv(){
     return document.getElementById('formats')? document.getElementById('formats') : document.querySelector('.a-box.a-box-tab.a-tab-content');
   }
   else if(host === 'flipkart'){
-    //var len = document.getElementsByClassName('PWqzqY').length;
     var sib = document.querySelector('._3LEeBH');
     var parent = document.querySelector('._1MVZfW').parentElement.lastChild;
     return [parent,sib];
-    //return document.getElementsByClassName('PWqzqY')[len-1];
   }
 
 }
-
-
-//LOAD SCRIPT FUNCTION (NOT USED)
-function loadScript(googleScript) {
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = googleScript; 
-            document.body.appendChild(script);
-        }
-
-
-
 
 //DECODE HTML TEXT FUNCTION (USED)
 function escapeHTML(htmlText){
@@ -73,55 +55,32 @@ function escapeHTML(htmlText){
 	return htmlText;
 }
 
-
-/*
-
-********************END OF FUNCTION DECLARATIONS*******************************
-
-*/
-var promise1 = new Promise(
+// Make a promise for getting the author name, because the author name is not instantly available
+var authorWait = new Promise(
     function(resolve,reject){
       setTimeout(function(){
         resolve(getAuthor());
       },1000);
-    }
-  );
-promise1
-.then(function(val){
-  author = val;
-  return 'https://www.google.co.in/search?&tbm=isch&q='+val+" author"; // PREPARES THE URL TO BE FETCHED
+    });
+
+authorWait
+.then(function(authorName){
+  author = authorName; //assign to global author (to be used later)
+  return 'https://www.google.co.in/search?&tbm=isch&q='+authorName+" author"; // PREPARES THE URL TO BE FETCHED
 })
 .then(function(url){
-  //NETWORK REQUEST
-  //***************
-  fetch(url,{
-    //no additional fetch parameters added
-    //mode: 'no-cors'
-  })
+  fetch(url,{})
     .then(function(response){
       return response.text();
     })
     .then(function returnImage(htmlText){
-    var reDataImage = /data:image\/jpeg/g; //REGULAR EXPRESSIONS TO GET BASE64 FOR 1st IMAGE
-
-    var b64ImgArray = htmlText.split(reDataImage,imageNeeded).slice(1).map(function(oneImage){
-      oneImage = "data:image/jpeg"+ oneImage.split("\"")[0];
-      oneImage = escapeHTML(oneImage);
-      return oneImage;
-    })
-
-    return b64ImgArray;
-
-    /* THE BELOW CODE IS FOR RETURNING ONE IMAGE TEXT 64 (NOT USED CURRENTLY)
-
-    htmlText = "data:image/jpeg" + htmlText.split(reDataImage).slice(1)[0].split("\"")[0];
-    htmlText = escapeHTML(htmlText);
-    return htmlText;
-
-    */
-    // SEE GIST : (THIS CODE WAS COMMENTED HERE) SEE GIST FOR HTML IMPLEMENTATION
-    //GIST URL : https://gist.github.com/geekodour/6e784fe8ab6b5cde3095e3937f860e86
-                
+      var reDataImage = /data:image\/jpeg/g; //regex for : data:image/jpeg
+      var b64ImgArray = htmlText.split(reDataImage,imageNeeded).slice(1).map(function(oneImage){
+        oneImage = "data:image/jpeg"+ oneImage.split("\"")[0];
+        oneImage = escapeHTML(oneImage);
+        return oneImage;
+        })
+      return b64ImgArray;
     })
     .then(function appendToSite(base64Array){
       

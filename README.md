@@ -1,6 +1,6 @@
 # Author-Google-Extension-
-Author Image Gallery for Amazon and Flipkart
-
+Author Image Gallery for Amazon and Flipkart v.0.0.1
+Note: Author Accuracy is not yet guranteed.
 ## Installation Instruction
 This is not packaged yet, so do the following.
 
