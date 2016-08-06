@@ -1,11 +1,11 @@
-._2Cl4hZ .image-gallery-div {
+._2Cl4hZ .image-gallery {
 	position:relative;
 	margin-top: 20px;
 	width: 700px;
 	overflow: hidden !important;
 }
 
-#formats .image-gallery-div {
+#formats .image-gallery {
 	margin-bottom: 30px !important;
 	height: 400px;
 }
